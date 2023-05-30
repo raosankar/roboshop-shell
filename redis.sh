@@ -16,6 +16,9 @@ echo -e "${color} Update Redis Listener Address ${nocolor}"
 sed -i "s/127.0.0.1/0.0.0.0/" /etc/redis.conf &>>${log_file}
 stat_check $?
 
+sed -i "s/127.0.0.1/0.0.0.0/" /etc/redis/redis.conf &>>${log_file}
+stat_check $?
+
 echo -e "${color} Start Redis Service ${nocolor}"
 systemctl enable redis &>>${log_file}
 systemctl restart redis &>>${log_file}
