@@ -50,7 +50,7 @@ systemd_setup(){
     cp /home/centos/roboshop-shell/$component.service /etc/systemd/system/$component.service &>>${log_file}
     stat_check $?
 
-    sed -i "s/roboshop_app_password/$roboshop_app_password" /etc/systemd/system/$component.service
+    sed -i -e "s/roboshop_app_password/$roboshop_app_password" /etc/systemd/system/$component.service  &>>${log_file}
     stat_check $?
 
     if [ $component == cart ]; then
