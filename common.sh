@@ -56,6 +56,10 @@ systemd_setup() {
     systemctl daemon-reload &>>${log_file}
     fi
 
+    if [ $component == user ]; then
+        echo -e "${color} Start $component Daemon Service ${nocolor}"
+        systemctl daemon-reload &>>${log_file}
+    fi
     echo -e "${color} Start $component Service ${nocolor}"
     systemctl enable $component &>>${log_file}
     systemctl restart $component &>>${log_file}
