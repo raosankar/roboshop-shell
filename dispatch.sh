@@ -10,4 +10,4 @@ go mod init $component &>>${log_file}
 go get &>>${log_file}
 go build &>>${log_file}
 
-systemd_Setup
+systemd_setup
