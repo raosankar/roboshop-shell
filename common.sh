@@ -50,14 +50,12 @@ systemd_setup(){
     cp /home/centos/roboshop-shell/$component.service /etc/systemd/system/$component.service &>>${log_file}
     stat_check $?
 
-    sed -i -e "s/roboshop_app_password/$roboshop_app_password" /etc/systemd/system/$component.service
+    sed -i "s/roboshop_app_password/$roboshop_app_password" /etc/systemd/system/$component.service
     stat_check $?
 
     if [ $component == cart ]; then
     echo -e "${color} Start $component Daemon Service ${nocolor}"
     systemctl daemon-reload &>>${log_file}
-    else
-      echo Failure To Load Daemon Service
     fi
 
     echo -e "${color} Start $component Service ${nocolor}"
@@ -83,11 +81,11 @@ nodejs(){
 }
 
 mongo_schema_setup(){
-  echo -e "${color} Copy MongoDB Repo File ${nocolor}"
+  echo -e "${color} Copy $component Repo File ${nocolor}"
   cp /home/centos/roboshop-shell/mongodb.repo /etc/yum.repos.d/mongo.repo &>>${log_file}
   stat_check $?
 
-  echo -e "${color} Installing MongoDB Client ${nocolor}"
+  echo -e "${color} Installing $component Client ${nocolor}"
   yum install mongodb-org-shell -y &>>${log_file}
   stat_check $?
 
