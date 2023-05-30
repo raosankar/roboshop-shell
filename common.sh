@@ -97,7 +97,7 @@ mysql_schema_setup(){
 
      echo -e " ${color} Load Schema  ${nocolor}"
      echo ${mysql_root_password}
-     mysql -h mongodb-dev.devopsbrs73.store -uroot -p${mysql_root_password} < ${app_path}/schema/$component.sql &>>${log_file}
+     mysql -h mysql-dev.devopsbrs73.store -uroot -p${mysql_root_password} < ${app_path}/schema/$component.sql &>>${log_file}
      echo "mysql -h mongodb-dev.devopsbrs73.store -uroot -p${mysql_root_password} < ${app_path}/schema/$component.sql &>>${log_file}"
      stat_check $?
 }
