@@ -23,7 +23,7 @@ cp /home/centos/roboshop-shell/roboshop.conf /etc/nginx/default.d/roboshop.conf 
 stat_check $?
 
 echo -e "${color} Starting Nginx Server ${nocolor}"
-systemctl enable nginx
+systemctl enable nginx &>>${log_file}
 stat_check $?
-systemctl restart nginx
+systemctl restart nginx &>>${log_file}
 stat_check $?
