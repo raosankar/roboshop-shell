@@ -95,12 +95,14 @@ mongo_schema_setup(){
 }
 
 mysql_schema_setup(){
-     echo -e " ${color} Install MySql Client  ${nocolor} "
+     echo -e " ${color} Install MySql Client  ${nocolor}"
      yum install mysql -y &>>${log_file}
      stat_check $?
 
-     echo -e " ${color} Load Schema  ${nocolor} "
+     echo -e " ${color} Load Schema  ${nocolor}"
+     echo ${mysql_root_password}
      mysql -h mongodb-dev.devopsbrs73.store -uroot -p${mysql_root_password} < ${app_path}/schema/$component.sql &>>${log_file}
+     echo "mysql -h mongodb-dev.devopsbrs73.store -uroot -p${mysql_root_password} < ${app_path}/schema/$component.sql &>>${log_file}"
      stat_check $?
 }
 
