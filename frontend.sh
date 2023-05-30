@@ -18,12 +18,12 @@ cd /usr/share/nginx/html &>>${log_file}
 unzip /tmp/$component.zip &>>${log_file}
 stat_check $?
 
-echo -e "${color} Copy  $component  Conf File ${nocolor} "
+echo -e "${color} Copy  $component  Conf File ${nocolor}"
 cp /home/centos/roboshop-shell/roboshop.conf /etc/nginx/default.d/roboshop.conf &>>${log_file}
 stat_check $?
 
-echo -e "${color} Starting Nginx Server ${nocolor} "
+echo -e "${color} Starting Nginx Server ${nocolor}"
 systemctl enable nginx
 stat_check $?
-systemctl restart nginx &>>${log_file}
+systemctl restart nginx
 stat_check $?
