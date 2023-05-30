@@ -16,7 +16,7 @@ stat_check(){
       echo FAILURE
   fi
 }
-app_presetup(){
+app_presetup() {
   echo -e "${color} Add Application User ${nocolor}"
 
   id roboshop &>>${log_file}
@@ -63,7 +63,7 @@ systemd_setup() {
 }
 
 
-nodejs(){
+nodejs() {
   echo -e "${color} Configuring NodeJS Repos ${nocolor}"
   curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>${log_file}
   stat_check $?
@@ -78,7 +78,7 @@ nodejs(){
   systemd_setup
 }
 
-mongo_schema_setup(){
+mongo_schema_setup() {
   echo -e "${color} Copy $component Repo File ${nocolor}"
   cp /home/centos/roboshop-shell/mongodb.repo /etc/yum.repos.d/mongo.repo &>>${log_file}
   stat_check $?
