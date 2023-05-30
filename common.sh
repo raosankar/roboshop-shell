@@ -100,7 +100,7 @@ mysql_schema_setup(){
      stat_check $?
 
      echo -e " ${color} Load Schema  ${nocolor} "
-     mysql -h mongodb-dev.devopsbrs73.store -uroot -pRoboShop@1 < ${app_path}/schema/$component.sql &>>${log_file}
+     mysql -h mongodb-dev.devopsbrs73.store -uroot -p${mysql_root_password} < ${app_path}/schema/$component.sql &>>${log_file}
      stat_check $?
 }
 
