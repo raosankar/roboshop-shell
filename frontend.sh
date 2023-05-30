@@ -4,6 +4,7 @@ echo -e "${color} Installing Nginx Server ${nocolor} "
 yum install nginx -y &>>${log_file}
 stat_check $?
 
+
 echo -e "${color} Removing Old App Content ${nocolor} "
 rm -rf /usr/share/nginx/html/* &>>${log_file}
 stat_check $?
@@ -22,6 +23,7 @@ cp /home/centos/roboshop-shell/roboshop.conf /etc/nginx/default.d/roboshop.conf 
 stat_check $?
 
 echo -e "${color} Starting Nginx Server ${nocolor} "
-systemctl enable nginx &>>${log_file}
+systemctl enable nginx
+stat_check $?
 systemctl restart nginx &>>${log_file}
 stat_check $?
